@@ -720,6 +720,10 @@ fn agent_java_args(jar_path: &str) -> Vec<String> {
     .map(str::to_string)
     .collect::<Vec<_>>();
 
+    if agent_jar_path_matches_key(jar_path, "access") {
+        args.push("-Djackcess.charset.VERSION_3=GBK".to_string());
+    }
+
     if agent_jar_path_matches_key(jar_path, "kingbase") {
         args.push("-Djava.net.preferIPv4Stack=true".to_string());
     }
